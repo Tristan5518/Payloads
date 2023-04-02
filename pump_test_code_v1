@@ -1,0 +1,73 @@
+
+//these are pin ports to avoid hard coding
+//in1/in2 are input ports for controlling direction of current
+//ena/enb are input ports for turning on/off motor or pwm
+//These will be used for the Sol-valves
+int in1 = 13; 
+int in2 = 12;
+int ena = 11;
+int enb = 10;
+
+//These will be ports for the pump
+//Pump also uses in1 and in2 at the moment
+int enc = 9;
+
+//This is for some buffer time before testing starts
+int count = 0;
+
+
+void setup() {
+  // initialize 4 digital pins as an output. 
+  pinMode(in1, OUTPUT);//Motor drive input signal pin 
+  pinMode(in2, OUTPUT);//Motor drive input signal pin  
+  pinMode(ena, OUTPUT);//Motor drive input signal pin   
+  pinMode(enb, OUTPUT);//Motor drive input signal pin 
+  pinMode(enc, OUTPUT);//Motor drive input signal pin 
+  //These should always remain this signal to keep current direction
+  // the same. ena/b/c wil automatically go to low since declared
+  //as output
+  digitalWrite(in1,HIGH);
+  digitalWrite(in2,LOW);
+  digitalWrite(ena,LOW);
+  digitalWrite(enb,LOW);
+  digitalWrite(enc,LOW);
+  
+  // Serial.begin(9600); 
+}
+
+void loop() {
+  /* --This is code that I've used for testing but is not meaningful to the actual project
+  if(count == 0){
+    delay(10000);
+    count = 1;
+  }
+  
+  pump_on();
+ delay(10000);
+   pump_off();
+   delay(2000);
+  */
+
+}
+
+//The functions below are basic shells for testing purposes
+
+void valve_a(){
+  digitalWrite(ena,HIGH);
+  delay(5000);
+  digitalWrite(ena,LOW);
+  }
+
+void valve_b(){
+  digitalWrite(enb,HIGH);
+  delay(5000);
+  digitalWrite(enb,LOW);
+  }
+
+void pump_on(){
+  digitalWrite(enc,HIGH);
+  }
+
+void pump_off(){
+  digitalWrite(enc,LOW);
+  }
